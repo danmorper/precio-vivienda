@@ -3,30 +3,56 @@ title: "Precio vivenda"
 author: "Daniel José Moreno Pérez"
 output:
   flexdashboard::flex_dashboard:
-    orientation: columns
+    orientation: rows
     vertical_layout: scroll
 ---
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(flexdashboard)
 ```
 
-## R Markdown
+# Análisis del Precio de la Vivienda
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Introducción
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+En esta sección, se presentará un análisis básico del precio de la vivienda en un determinado país o región. Se mostrarán gráficos y estadísticas relevantes para entender la situación actual del mercado inmobiliario.
 
-```{r cars}
-summary(cars)
+## Datos
+
+Los datos utilizados en este análisis fueron obtenidos de fuentes oficiales del gobierno o de organismos encargados de recopilar información sobre el mercado inmobiliario.
+
+```{r}
+# Aquí se carga el conjunto de datos a utilizar
+#data(housing_prices)
+#head(housing_prices)
 ```
 
-## Including Plots
+## Análisis Exploratorio de Datos
 
-You can also embed plots, for example:
+En esta sección, se realizará un análisis exploratorio de los datos para entender las características del conjunto de datos y cómo se relacionan las diferentes variables.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+# Aquí se pueden incluir gráficos para explorar los datos
+# ggplot(housing_prices, aes(x = area, y = price)) +
+#   geom_point() +
+#   ggtitle("Relación entre el Área de la Vivienda y el Precio")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Modelo de Regresión
+
+En esta sección, se ajustará un modelo de regresión para predecir el precio de la vivienda en función de las características de la propiedad.
+
+```{r}
+# Aquí se ajusta el modelo de regresión
+# model <- lm(price ~ area + bedrooms + bathrooms, data = housing_prices)
+# summary(model)
+```
+
+## Conclusiones
+
+En esta sección, se presentarán las conclusiones del análisis y se discutirán las implicaciones del modelo de regresión ajustado.
+
+```{r}
+# Aquí se pueden incluir gráficos o tablas adicionales para apoyar las conclusiones
+```
+
+¡Espero que esto te ayude a comenzar con tu análisis del precio de la vivienda utilizando `flexdashboard`!
