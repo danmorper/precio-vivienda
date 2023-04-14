@@ -2,6 +2,7 @@ library(dplyr)
 library(rvest)
 library(magrittr)
 library(zoo)
+# https://www.youtube.com/watch?v=h_0ljTxOBR4 explicacion de los diferentes tipos de interes
 url <- "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
 # Introducimos la página web a buscar
 pagina <- read_html(url, as.data.frame=T, stringsAsFactors = TRUE)
@@ -23,8 +24,10 @@ tipos_interes[tipos_interes=="-"] <- NA
 tipos_interes[tipos_interes==""] <- NA
 
 tipos_interes$Año <- na.locf(tipos_interes$Año)
-write_csv(tipos_interes)
 # tipos_interes <- tipos_interes %>% mutate_if(is.character, ~as.numeric(gsub("-", NA, .)))
 
+tipos_interes$Año <- as.factor(tipos_interes$Año)
+tipos_interes$`Deposit facility` <- gsub("−", "-", tipos_interes$`Deposit facility`)
+tipos_interes$`Deposit facility` <- as.numeric(tipos_interes$`Deposit facility`)
 # Minimum Bid Rate es el que puede tener más influencia
-write.csv(tipos_interes, file = "tipos_interes.csv", row.names = FALSE)
+write.csv(tipos_interes, file = "mydatasets/tipos_interes.csv", row.names = FALSE)
